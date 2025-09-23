@@ -22,6 +22,13 @@ Este projeto cria um ambiente de desenvolvimento full-stack padronizado e reprod
 -   **Backend:** Node.js (pronto para NestJS)
 -   **Banco de Dados:** PostgreSQL
 -   **Admin de BD:** pgAdmin4
+-   **Conectividade:** Tailscale (VPN)
+
+## 🔌 Conectividade e Acesso Remoto
+
+Para garantir o acesso seguro e estável ao ambiente de desenvolvimento a partir de locais remotos (como da universidade para o servidor em casa), este projeto utiliza a VPN **Tailscale**.
+
+A Tailscale cria uma rede privada virtual segura (mesh VPN) que permite que os dispositivos se comuniquem diretamente, como se estivessem na mesma rede local. Isso elimina a necessidade de configurações complexas de roteador (como abertura de portas) e garante que todo o tráfego entre o desenvolvedor e o servidor seja criptografado de ponta a ponta.
 
 ## 🚀 Como Executar o Projeto
 
