@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  # Serviço do Banco de Dados PostgreSQL
+  db:
+    image: postgres:alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  # Serviço do Admin do Banco de Dados
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_service
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT}:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - app-network
+
+  # Serviço de Backend (NestJS)
+  backend:
+    build: ./backend
+    container_name: backend_service
+    restart: always
+    ports:
+      - "${BACKEND_PORT}:3000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    volumes:
+      - ./backend:/usr/src/app
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  # Serviço de Frontend (React + Vite)
+  frontend:
+    build: ./frontend
+    container_name: frontend_service
+    restart: always
+    ports:
+      - "${FRONTEND_PORT}:5173"
+    volumes:
+      - ./frontend:/usr/src/app
+    networks:
+      - app-network
+    depends_on:
+      - backend
+      
+  # Serviço de Proxy Reverso (Nginx)
+  nginx:
+    build: ./nginx
+    container_name: nginx_proxy
+    restart: always
+    ports:
+      - "${NGINX_PORT}:80"
+    networks:
+      - app-network
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
+networks:
+  app-network:
+    driver: bridge
