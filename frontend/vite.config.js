@@ -9,7 +9,6 @@ export default defineConfig({
     // Isso faz o servidor escutar em todas as interfaces de rede,
     // o que é necessário para o Docker.
     host: true,
-    // Aqui está a correção para o erro que você viu.
     // Permitimos que o Nginx (visto como host 'frontend') se conecte.
     allowedHosts: ['frontend'],
   }
