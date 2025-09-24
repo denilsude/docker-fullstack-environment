@@ -2,11 +2,11 @@
 
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
-## 📜 Descrição do Projeto
+##  Descrição do Projeto
 
 Este projeto cria um ambiente de desenvolvimento full-stack padronizado e reprodutível utilizando Docker Compose. O objetivo é orquestrar um ecossistema completo com Frontend, Backend, Banco de Dados, Admin de Banco de Dados e um Proxy Reverso, garantindo que toda a equipe de desenvolvimento possa trabalhar em um ambiente idêntico e simplificado.
 
-## ✨ Features
+##  Features
 
 -   **Containerização Completa:** Todos os 5 serviços (Nginx, Frontend, Backend, DB, DB Admin) rodam em contêineres Docker isolados.
 -   **Proxy Reverso com Nginx:** Um único ponto de entrada (`localhost`) que direciona o tráfego para o serviço correto.
@@ -14,7 +14,7 @@ Este projeto cria um ambiente de desenvolvimento full-stack padronizado e reprod
 -   **Persistência de Dados:** Os dados do PostgreSQL e as configurações do pgAdmin são mantidos em volumes Docker, sobrevivendo à recriação dos contêineres.
 -   **Configuração Centralizada:** Todas as variáveis (portas, senhas, etc.) são gerenciadas em um único arquivo `.env`.
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 -   **Orquestração:** Docker, Docker Compose
 -   **Proxy Reverso:** Nginx
@@ -24,13 +24,13 @@ Este projeto cria um ambiente de desenvolvimento full-stack padronizado e reprod
 -   **Admin de BD:** pgAdmin4
 -   **Conectividade:** Tailscale (VPN)
 
-## 🔌 Conectividade e Acesso Remoto
+##  Conectividade e Acesso Remoto
 
 Para garantir o acesso seguro e estável ao ambiente de desenvolvimento a partir de locais remotos (como da universidade para o servidor em casa), este projeto utiliza a VPN **Tailscale**.
 
 A Tailscale cria uma rede privada virtual segura (mesh VPN) que permite que os dispositivos se comuniquem diretamente, como se estivessem na mesma rede local. Isso elimina a necessidade de configurações complexas de roteador (como abertura de portas) e garante que todo o tráfego entre o desenvolvedor e o servidor seja criptografado de ponta a ponta.
 
-## 🚀 Como Executar o Projeto
+##  Como Executar o Projeto
 
 **Pré-requisitos:**
 -   [Git](https://git-scm.com)
@@ -55,7 +55,7 @@ A Tailscale cria uma rede privada virtual segura (mesh VPN) que permite que os d
     docker compose up -d --build
     ```
 
-## ⚙️ Configuração (`.env`)
+##  Configuração (`.env`)
 
 O arquivo `.env` controla todas as configurações do ambiente:
 
@@ -72,7 +72,7 @@ O arquivo `.env` controla todas as configurações do ambiente:
 | `PGADMIN_DEFAULT_PASSWORD` | Senha de login para o pgAdmin                     | `admin`         |
 
 
-## 🌐 Pontos de Acesso (Endpoints)
+##  Pontos de Acesso (Endpoints)
 
 Após executar `docker compose up`, os serviços estarão acessíveis em:
 
