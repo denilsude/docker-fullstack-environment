@@ -81,4 +81,4 @@ Após executar `docker compose up`, os serviços estarão acessíveis em:
 -   **pgAdmin:** `http://localhost:5050/`
 
 ---
-_Projeto desenvolvido como parte de um exercício acadêmico, com a mentoria da IA Gemini._
+_Projeto desenvolvido como parte de um exercício acadêmico,do curso CMP2304 - TECNOLOGIA DE CONSTRUÇÃO DE SOFTWARE I._
